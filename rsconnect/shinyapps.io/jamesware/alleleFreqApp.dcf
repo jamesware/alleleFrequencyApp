@@ -2,8 +2,9 @@ name: alleleFreqApp
 account: jamesware
 server: shinyapps.io
 appId: 114393
-bundleId: 504945
+bundleId: 509203
 url: https://jamesware.shinyapps.io/alleleFreqApp/
-when: 1468510844.97135
+when: 1468938742.25116
 asMultiple: FALSE
 asStatic: FALSE
+ignoredFiles: README.md
