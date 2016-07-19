@@ -23,7 +23,7 @@ server <- shinyServer(function(input, output) {
        myMaxAF = sqrt(myPrev) * input$hetA * sqrt(input$hetG) * (1/sqrt(input$pen))
      }
      myMaxAC = qpois(p=as.numeric(input$CI),
-           lambda=(2*input$popSize)*(myMaxAF))
+           lambda=(input$popSize)*(myMaxAF))
      return(list(myMaxAF,myMaxAC))
    }) 
     

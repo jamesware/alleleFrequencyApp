@@ -65,10 +65,10 @@ myTab1 <- function() {
                             selected = 0.95,
                             inline=T),
                numericInput("popSize",
-                            "Reference population size",
+                            "Reference population size (alleles)",
                             min = 1,
                             max = 1e8,
-                            value = 60706)
+                            value = 2*60706)
                
              )),
              ##### Main panel
