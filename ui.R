@@ -8,6 +8,7 @@
 #
 
 library(shiny)
+require(markdown)
 
 myTab1 <- function() {
   tabPanel("calculate AF",
@@ -24,7 +25,7 @@ myTab1 <- function() {
                             choices = list("monoallelic","biallelic"),
                             selected = "monoallelic"),
                numericInput("prev",
-                            "Prevalence = 1 in ...",
+                            "Prevalence = 1 in ... (people)",
                             min = 1,
                             max = 1e8,
                             value = 500),
@@ -90,11 +91,11 @@ myTab2 <- function() {
                             min = 0,
                             max = 1,
                             value = 0.001),
-               numericInput("popSize_2",
-                            "Reference population size",
+               numericInput("popAN_2",
+                            "Reference population size (alleles)",
                             min = 1,
                             max = 1e8,
-                            value = 60706),
+                            value = 2*60706),
                radioButtons("CI_2",
                             "Confidence:",
                             choices = list(0.9,0.95,0.99,0.999),
@@ -159,8 +160,41 @@ myTab3 <- function() {
   }
 
 myTab4 <- function() {
+  tabPanel("inverse AF",
+           
+           ##### Second row  
+           fluidRow(
+             ##### Sidebar
+             column(8,wellPanel(
+               numericInput("AC_4",
+                            "Observed population AC",
+                            min = 0,
+                            max = 1000000,
+                            value = 10),
+               numericInput("AN_4",
+                            "Observed population alleles sequenced (AN)",
+                            min = 1,
+                            max = 1000000,
+                            value = 2*60706),
+               radioButtons("CI_4",
+                            "Confidence:",
+                            choices = list(0.9,0.95,0.99,0.999),
+                            selected = 0.95,
+                            inline=T)
+             )),
+             ##### Main panel
+             column(4,
+                    h3("Filter allele frequency:"),
+                    h2(textOutput("filterAF"), align="center", style = "color:red")
+             )
+           ) #end fluidRow
+  )
+  }
+
+myTab_about <- function() {
   tabPanel("about",
            includeMarkdown("about.md"))}
+
 # Define UI for application
 ui <- shinyUI(navbarPage("Frequency Filter",
                          
@@ -168,6 +202,7 @@ ui <- shinyUI(navbarPage("Frequency Filter",
                          myTab1(),
                          myTab2(),
                          myTab3(),
-                         myTab4()
+                         myTab4(),
+                         myTab_about()
                          
 ))

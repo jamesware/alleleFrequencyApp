@@ -8,6 +8,7 @@
 #
 
 library(shiny)
+require(stats)
 
 # Define server logic required to generate output
 
@@ -31,7 +32,7 @@ server <- shinyServer(function(input, output) {
   
    output$userMaxAC <- renderText({
      qpois(p=as.numeric(input$CI_2),
-           lambda=(2*input$popSize_2)*(input$userMaxAF_2))
+           lambda=(input$popAN_2)*(input$userMaxAF_2))
    })
   
    output$tab3 <- renderTable({
@@ -89,7 +90,41 @@ server <- shinyServer(function(input, output) {
        return(myArchitecture)
    })
    
-})
+   find_af_filter <- function(ac, an, ci=.95, lower=(.1/(2*60706)), upper=2, tol=1e-7) {
+     # backward method: given an observed AC, what is the highest AF filter for which one should remove this variant?
+     # This function will accept an AC_Adj and an AN_Adj and will return the highest AF filter for which you would want to reject
+     # this variant as a potential Mendelian causal allele.
+     # Important notes about parameters:
+     # 1. for uniroot to work, lower has to be rarer than a singleton, and upper has to be higher than fixed, hence the AF here runs from 0.1 alleles in ExAC to an impossible AF of 200%
+     # 2. you need a tight tolerance (tol) to get accurate results at low AF, so we use 1e-7 as default
+
+     if (is.na(ac) | is.na(an) | ac == 0 | an == 0 | ac == 1) {
+       return (NA)
+     } else {
+       quantile_limit = ci # ci for one-sided, 1-(1-ci)/2 for two-sided
+       # this has been tested and with the default parameters here, uniroot seems to never fail for an AC, AN values
+       # in ExAC. still, it's good to have this tryCatch in here for debugging or in case anyone wants to override
+       # the defaults. instead of just giving the error/warning message it also tells you which AC and AN values
+       # it failed on.
+       # uniroot_result <- stats::uniroot(f = function(af,ac,an) { return (ac - qpois(p=quantile_limit,lambda=an*af)) },lower=lower,upper=upper,ac=ac,an=an,tol=tol)
+       attempt_uniroot = tryCatch({
+         uniroot_result = uniroot(f = function(af,ac,an) { return (ac - qpois(p=quantile_limit,lambda=an*af)) },lower=lower,upper=upper,ac=ac,an=an,tol=tol)
+       }, warning = function(w) {
+         print(paste("ac= ",as.character(ac),", an= ",as.character(an)," warning = ",as.character(w),sep=''))
+         return (0.0)
+       }, error = function(e) {
+         print(paste("ac= ",as.character(ac),", an= ",as.character(an)," error = ",as.character(e),sep=''))
+         return (0.0)
+       }, finally = {
+       })
+
+       return (signif(uniroot_result$root,3))
+     }
+   }
+
+   output$filterAF = renderText(find_af_filter(ac=input$AC_4, an=input$AN_4, ci=as.numeric(input$CI_4), lower=(.1/(2*1000000)), upper=2, tol=1e-7))
+   
+   })
 
 
 #### to run or deploy app:
