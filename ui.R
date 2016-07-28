@@ -76,7 +76,8 @@ myTab1 <- function() {
                     h3("Maximum reference AC:"),
                     h2(textOutput("maxAC"),align="center",style = "color:red")
              )
-           ) #end fluidRow
+           ), #end fluidRow
+           fluidRow(includeMarkdown("tab1.md"))
   )}
 
 myTab2 <- function() {
