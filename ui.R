@@ -8,13 +8,19 @@
 #
 
 library(shiny)
-require(markdown)
+library(markdown)
+
+myTab_home <- function() {
+  tabPanel("HOME",
+           includeHTML("./appTextContent/home.html")
+  )}
+#           includeMarkdown("./home.md"))}
 
 myTab1 <- function() {
   tabPanel("calculate AF",
            
            # Application title
-           titlePanel("Maximum credible population allele frequency"),
+           # titlePanel("Maximum credible population allele frequency"),
            
            ##### First row
            fluidRow(
@@ -77,7 +83,8 @@ myTab1 <- function() {
                     h2(textOutput("maxAC"),align="center",style = "color:red")
              )
            ), #end fluidRow
-           fluidRow(includeMarkdown("tab1.md"))
+           #fluidRow(includeMarkdown("./tab1.md"))
+           fluidRow(includeHTML("./appTextContent/tab1.html"))
   )}
 
 myTab2 <- function() {
@@ -108,7 +115,8 @@ myTab2 <- function() {
                     h3("Maximum reference AC:"),
                     h2(textOutput("userMaxAC"),align="center",style = "color:red")
              )
-           ) #end fluidRow
+           ), #end fluidRow
+           fluidRow(includeHTML("./appTextContent/tab2.html"))
   )}
 
 myTab3 <- function() {
@@ -156,7 +164,8 @@ myTab3 <- function() {
                         selected = "Penetrance"),
            br(),
            tableOutput("tab3"))
-    ) #end row
+  ), #end fluidRow
+  fluidRow(includeHTML("./appTextContent/tab3.html"))
   )
   }
 
@@ -188,18 +197,20 @@ myTab4 <- function() {
                     h3("Filter allele frequency:"),
                     h2(textOutput("filterAF"), align="center", style = "color:red")
              )
-           ) #end fluidRow
+           ), #end fluidRow
+           fluidRow(includeHTML("./appTextContent/tab4.html"))
   )
   }
 
 myTab_about <- function() {
   tabPanel("about",
-           includeMarkdown("about.md"))}
+           includeHTML("./appTextContent/about.html"))}
+#           includeMarkdown("./about.md"))}
 
 # Define UI for application
 ui <- shinyUI(navbarPage("Frequency Filter",
-                         
-                         ##### TAB1                         
+                         # theme = "stylesheet.css",  #to style, insert .css into folder ./www/
+                         myTab_home(),                   
                          myTab1(),
                          myTab2(),
                          myTab3(),
