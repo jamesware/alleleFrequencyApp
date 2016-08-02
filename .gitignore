@@ -3,3 +3,5 @@
 .RData
 .Ruserdata
 appTextContent/*.html
+rsconnect
+rsconnect/*
