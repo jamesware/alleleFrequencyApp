@@ -1,11 +1,5 @@
-#
 # This is the user-interface definition of a Shiny web application. You can
 # run the application by clicking 'Run App' above.
-#
-# Find out more about building applications with Shiny here:
-# 
-#    http://shiny.rstudio.com/
-#
 
 library(shiny)
 library(shinyBS)
@@ -13,9 +7,9 @@ library(markdown)
 
 myTab_home <- function() {
   tabPanel("HOME",
-           includeHTML("./appTextContent/home.html")
-  )}
-#           includeMarkdown("./home.md"))}
+           # includeHTML("./appTextContent/home.html")
+                     includeMarkdown(file.path(".","appTextContent","home.md"))
+             )}
 
 myTab1 <- function() {
   tabPanel("calculate AF",
@@ -88,8 +82,7 @@ myTab1 <- function() {
                     h2(textOutput("maxAC"),align="center",style = "color:red")
              )
            ), #end fluidRow
-           #fluidRow(includeMarkdown("./tab1.md"))
-           fluidRow(includeHTML("./appTextContent/tab1.html"))
+           fluidRow(includeMarkdown(file.path(".","appTextContent","tab1.md")))
   )}
 
 myTab2 <- function() {
@@ -121,7 +114,7 @@ myTab2 <- function() {
                     h2(textOutput("userMaxAC"),align="center",style = "color:red")
              )
            ), #end fluidRow
-           fluidRow(includeHTML("./appTextContent/tab2.html"))
+           fluidRow(includeMarkdown(file.path(".","appTextContent","tab2.md")))
   )}
 
 myTab3 <- function() {
@@ -129,10 +122,6 @@ myTab3 <- function() {
   fluidRow(
     ##### Sidebar
       column(8,wellPanel(
-        # radioButtons("inh_3",
-        #              "Inheritance:",
-        #              choices = list("monoallelic","biallelic"),
-        #              selected = "monoallelic"),
         numericInput("prev_3",
                      "Prevalence = 1 in ...",
                      min = 1,
@@ -144,11 +133,6 @@ myTab3 <- function() {
                     min = 0,
                     max = 1,
                     value = 0.1),
-        # sliderInput("hetG_3",
-        #             "Genetic heterogeneity:",
-        #             min = 0,
-        #             max = 1,
-        #             value = 1),
         br(),
         sliderInput("pen_3",
                     "Penetrance:",
@@ -170,7 +154,7 @@ myTab3 <- function() {
            br(),
            tableOutput("tab3"))
   ), #end fluidRow
-  fluidRow(includeHTML("./appTextContent/tab3.html"))
+  fluidRow(includeMarkdown(file.path(".","appTextContent","tab3.md")))
   )
   }
 
@@ -203,14 +187,14 @@ myTab4 <- function() {
                     h2(textOutput("filterAF"), align="center", style = "color:red")
              )
            ), #end fluidRow
-           fluidRow(includeHTML("./appTextContent/tab4.html"))
+           fluidRow(includeMarkdown(file.path(".","appTextContent","tab4.md")))
   )
   }
 
 myTab_about <- function() {
   tabPanel("about",
-           includeHTML("./appTextContent/about.html"))}
-#           includeMarkdown("./about.md"))}
+           #includeHTML("./appTextContent/about.html"))}
+            includeMarkdown(file.path(".","appTextContent","about.md")))}
 
 
 # Define UI for application

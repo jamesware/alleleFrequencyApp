@@ -1,4 +1,4 @@
-###Notes
+### Notes
 
 Here we start by computing a *maximum credible population AF* for a given genetic architecture, as described under the `calculate AF` tab.  It also allows you to fix the maximum population AF in order to find a genetic architecture that **is** compatible with the observed data. For example, under your initial assumptions about a condition you may find that a variant is reported to be too common, but that it would be compatible with disease under a model of substantially reduced penetrance. 
 

@@ -6,4 +6,4 @@ These pages were built using [Shiny](http://shiny.rstudio.com), and the source c
 
 The app was designed and implemented by James Ware, and is maintained by members of the [Ware lab](http://www.imperial.ac.uk/people/j.ware) at Imperial College London.
 
-Please report any issues using the [issue tracker](https://github.com/jamesware/alleleFrequencyApp/issues/new).
+Please report any issues using the [issue tracker](https://github.com/jamesware/alleleFrequencyApp/issues/new).  
