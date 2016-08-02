@@ -11,7 +11,7 @@ Currently implemented for dominant conditions only.
 
 **Penetrance** - select a value in the range 0-1 to represent penetrance.
 
-**Maximum population AF** - likely calculated using the `inverse AF` function, to correspond to an actual observed AC in the reference sample.
+**Maximum credible population AF** - likely calculated using the `inverse AF` function, to correspond to an actual observed AC in the reference sample.
 
 
 The homepage contains a link to the references for the mathematical derivations of these computations.  

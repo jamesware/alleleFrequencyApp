@@ -8,6 +8,7 @@
 #
 
 library(shiny)
+library(shinyBS)
 library(markdown)
 
 myTab_home <- function() {
@@ -30,11 +31,15 @@ myTab1 <- function() {
                             "Inheritance:",
                             choices = list("monoallelic","biallelic"),
                             selected = "monoallelic"),
+               # bsTooltip("inh", "title", placement = "bottom", trigger = "hover",
+               #           options = NULL),
                numericInput("prev",
                             "Prevalence = 1 in ... (people)",
                             min = 1,
                             max = 1e8,
                             value = 500),
+               # bsTooltip("prev", "title", placement = "top", trigger = "hover",
+               #           options = NULL),
                br(),
                sliderInput("hetA",
                            "Allelic heterogeneity:",
@@ -79,7 +84,7 @@ myTab1 <- function() {
              )),
              ##### Main panel
              column(4,
-                    h3("Maximum reference AC:"),
+                    h3("Maximum tolerated reference AC:"),
                     h2(textOutput("maxAC"),align="center",style = "color:red")
              )
            ), #end fluidRow
@@ -112,7 +117,7 @@ myTab2 <- function() {
              )),
              ##### Main panel
              column(4,
-                    h3("Maximum reference AC:"),
+                    h3("Maximum tolerated reference AC:"),
                     h2(textOutput("userMaxAC"),align="center",style = "color:red")
              )
            ), #end fluidRow
@@ -151,7 +156,7 @@ myTab3 <- function() {
                     max = 1,
                     value = 0.5),
         numericInput("userMaxAF_3",
-                     "Maximum population AF",
+                     "Maximum credible population AF",
                      min = 0,
                      max = 1,
                      value = 0.001)
@@ -206,6 +211,7 @@ myTab_about <- function() {
   tabPanel("about",
            includeHTML("./appTextContent/about.html"))}
 #           includeMarkdown("./about.md"))}
+
 
 # Define UI for application
 ui <- shinyUI(navbarPage("Frequency Filter",

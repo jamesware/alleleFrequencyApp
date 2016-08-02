@@ -1,6 +1,6 @@
 ###Notes
 
-For a given *maximum credible population AF*, this calculator determinues the maximum permissible allele count in a specific reference population (such as ExAC), based on the size of the population and at a user-specified confidence level.  
+For a given *maximum credible population AF*, this calculator determinues the maximum tolerated allele count in a specific reference population (such as ExAC), based on the size of the population and at a user-specified confidence level.  
 
 **Maximum population AF** - this can be calculated from the genetic architecture on the `calculate AF` tab, or input directly here (intended to save time for returning users).
 

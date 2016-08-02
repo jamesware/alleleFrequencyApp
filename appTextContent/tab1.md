@@ -1,6 +1,6 @@
 ###Notes
 
-This calculator works step by step through a framework of variant assessment.  For a disease of interest the user inputs parameters that describe the genetic architecture of the condition, and the calculator computes the maximum expected allele frequency of a disease-causing variant in the general population (*maximum credible population AF*). In a second step, the calculator determinues the maximum permissible allele count in a specific reference population (such as ExAC), based on the size of the population and at a user-specified confidence level.  
+This calculator works step by step through a framework of variant assessment.  For a disease of interest the user inputs parameters that describe the genetic architecture of the condition, and the calculator computes the maximum expected allele frequency of a disease-causing variant in the general population (*maximum credible population AF*). In a second step, the calculator determinues the maximum tolerated allele count in a specific reference population (such as ExAC), based on the size of the population and at a user-specified confidence level.  
 
 ####Define genetic architecture to calculate the maximum credible population AF:
 
@@ -12,7 +12,7 @@ This calculator works step by step through a framework of variant assessment.  F
 
 **Penetrance** - select a value in the range 0-1 to represent penetrance
 
-####Define reference sample to calculate the corresponding maximum credible sample AC:
+####Define reference sample to calculate the corresponding maximum tolerated sample AC:
 
 For a given true population AF, the calculator provides an upper limit to the likely sample AC, depending on the size of the population and the desired confidence.
 

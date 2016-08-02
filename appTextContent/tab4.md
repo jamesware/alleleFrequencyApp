@@ -1,6 +1,8 @@
 ###Notes
 
-This effectively reverses the `calculate AC` function: starting with an observed allele count, it computes the highest *maximum credible population AF* for which the observed AC is **not** compatible with pathogenicity. This corresponds to the "filter_AF" annotation in the ExAC dataset. In other words, if the disease under study has a maximum tolerated allele frequency $\le$ this value then the variant should be filtered, while if > this value the variant remains a candidate.  The value in ExAC was computed for a 95% confidence - here the user can choose from a range of thresholds.
+This effectively reverses the `calculate AC` function: starting with an observed allele count, it computes an associated threshold *filter allele frequency* for a variant. Technically, this is the highest disease-specific *maximum credible population AF* for which the observed AC is **not** compatible with pathogenicity.  More practically, If the *filter allele frequency* of a variant is above the *maximum credible population AF* for a condition of interest, then that variant should be filtered (ie not considered a candidate causative variant). 
+
+The *filter allele frequency* corresponds to the "filter_AF" annotation in the ExAC dataset. The value in ExAC was computed for a 95% confidence - here the user can choose from a range of thresholds.
 
 **Observed population AC** - e.g. in ExAC.
 
