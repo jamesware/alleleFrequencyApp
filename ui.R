@@ -5,11 +5,16 @@ library(shiny)
 library(shinyBS)
 library(markdown)
 
+# pass "style" argument to fluidRow or tabPanel calls for includeMarkdown sections
+mdStyle <- "margin-left: 30px; margin-right: 30px" # specify some margins
+  
 myTab_home <- function() {
   tabPanel("HOME",
            # includeHTML("./appTextContent/home.html")
-                     includeMarkdown(file.path(".","appTextContent","home.md"))
-             )}
+           includeMarkdown(file.path(".","appTextContent","home.md")),
+           style=mdStyle
+           )
+  }
 
 myTab1 <- function() {
   tabPanel("calculate AF",
@@ -82,13 +87,14 @@ myTab1 <- function() {
                     h2(textOutput("maxAC"),align="center",style = "color:red")
              )
            ), #end fluidRow
-           fluidRow(includeMarkdown(file.path(".","appTextContent","tab1.md")))
-  )}
+           fluidRow(includeMarkdown(file.path(".","appTextContent","tab1.md")),
+                    style=mdStyle
+                    )
+           )
+  }
 
 myTab2 <- function() {
   tabPanel("calculate AC",
-           
-           ##### Second row  
            fluidRow(
              ##### Sidebar
              column(8,wellPanel(
@@ -114,8 +120,11 @@ myTab2 <- function() {
                     h2(textOutput("userMaxAC"),align="center",style = "color:red")
              )
            ), #end fluidRow
-           fluidRow(includeMarkdown(file.path(".","appTextContent","tab2.md")))
-  )}
+           fluidRow(includeMarkdown(file.path(".","appTextContent","tab2.md")),
+                    style=mdStyle
+                    )
+           )
+  }
 
 myTab3 <- function() {
   tabPanel("explore architecture",
@@ -154,7 +163,9 @@ myTab3 <- function() {
            br(),
            tableOutput("tab3"))
   ), #end fluidRow
-  fluidRow(includeMarkdown(file.path(".","appTextContent","tab3.md")))
+  fluidRow(includeMarkdown(file.path(".","appTextContent","tab3.md")),
+           style=mdStyle
+           )
   )
   }
 
@@ -187,14 +198,18 @@ myTab4 <- function() {
                     h2(textOutput("filterAF"), align="center", style = "color:red")
              )
            ), #end fluidRow
-           fluidRow(includeMarkdown(file.path(".","appTextContent","tab4.md")))
+           fluidRow(includeMarkdown(file.path(".","appTextContent","tab4.md")),
+                    style=mdStyle)
   )
   }
 
 myTab_about <- function() {
   tabPanel("about",
            #includeHTML("./appTextContent/about.html"))}
-            includeMarkdown(file.path(".","appTextContent","about.md")))}
+          includeMarkdown(file.path(".","appTextContent","about.md")),
+          style=mdStyle
+          )
+  }
 
 
 # Define UI for application
