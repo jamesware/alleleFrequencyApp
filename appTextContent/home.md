@@ -15,3 +15,7 @@ We provide four calculators:
 - `explore architecture` - starts by computing a *maximum credible population AF* for a given genetic architecture, as above.  However, it also allows you to fix the maximum population AF in order to find a genetic architecture that is compatible with the observed data.  For example, under your initial assumptions about a condition you may find that a variant is reported to be too common, but that it would be compatible with disease under a model of substantially reduced penetrance.  
 
 - `inverse AF` - begins with an observed allele count, and computes an associated threshold *filter allele frequency* for a variant.  If the *filter allele frequency* of a variant is above the *maximum credible population AF* for a condition of interest, then that variant should be filtered (ie not considered a candidate causative variant).  This corresponds to the "filter_AF" annotation in the ExAC dataset.  ExAC returns the value for a 95% confidence - here the user can choose from a range of thresholds.
+<br>
+<br>
+<br>
+*alleleFrequencyApp - a Shiny App for allele frequency calculations Copyright (C) 2016 James Ware*
