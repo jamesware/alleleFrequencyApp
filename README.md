@@ -1,8 +1,9 @@
 # alleleFrequencyApp
 
-This repository contains code for a Shiny App to support cartain allele frequency calculations for the assessment & interpretation of rare genetic variants.  
+This repository contains code for a Shiny App to support certain allele frequency calculations for the assessment & interpretation of rare genetic variants.  
 
-You can see it in action [here](https://jamesware.shinyapps.io/alleleFrequencyApp/).
+A manuscript describing our approach to allele frequency assessment is available on [biorxiv]().   
+You can see the app in action [here](https://jamesware.shinyapps.io/alleleFrequencyApp/).
 
 =====
 
