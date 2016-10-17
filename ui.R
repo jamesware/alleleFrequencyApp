@@ -208,6 +208,52 @@ myTab4 <- function() {
   )
   }
 
+myTab5 <- function() {
+  tabPanel("penetrance",
+           
+           #####row  
+           fluidRow(
+             ##### Sidebar
+             column(8,wellPanel(
+               numericInput("prev_5",
+                            "Estimated case prevalence (1 in ...)",
+                            min = 0,
+                            max = 1000000,
+                            value = 500),
+               br(),
+               numericInput("caseAC_5",
+                            "Observed case allele count (AC)",
+                            min = 0,
+                            max = 1000000,
+                            value = 10),
+               numericInput("caseAN_5",
+                            "Case alleles sequenced (AN)",
+                            min = 1,
+                            max = 1000000,
+                            value = 1000),
+               br(),
+               numericInput("popAC_5",
+                            "Observed population AC",
+                            min = 0,
+                            max = 1000000,
+                            value = 10),
+               numericInput("popAN_5",
+                            "Population alleles sequenced (AN)",
+                            min = 1,
+                            max = 1000000,
+                            value = 2*60706)
+             )),
+             ##### Main panel
+             column(4,
+                    h3("Estimated penetrance:"),
+                    h2(textOutput("penetrance_5"), align="center", style = "color:red")
+             )
+           ), #end fluidRow
+           fluidRow(includeMarkdown(file.path(".","appTextContent","tab5.md")),
+                    style=mdStyle)
+  )
+}
+
 myTab_about <- function() {
   tabPanel("about",
            #includeHTML("./appTextContent/about.html"))}
@@ -225,6 +271,7 @@ ui <- shinyUI(navbarPage("Frequency Filter",
                          myTab2(),
                          myTab3(),
                          myTab4(),
+                         myTab5(),
                          myTab_about()
                          
 ))

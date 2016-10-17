@@ -140,6 +140,25 @@ server <- shinyServer(function(input, output) {
    
    output$filterAF = renderText(find_af_filter(ac=input$AC_4, an=input$AN_4, ci=as.numeric(input$CI_4), lower=(.1/(2*1000000)), upper=2, tol=1e-7))
    
+########SERVER FOR TAB5 - PENETRANCE CALCULATOR   
+   
+   penetrance5 <- reactive({
+     myPrev = 1/input$prev_5
+
+     myPen = myPrev * ((input$caseAC_5/input$caseAN_5) / (input$popAC_5 / input$popAN_5))
+
+     myLCI = 0
+     myUCI = 1
+     
+     myPen = signif(myPen,3)
+     
+     output = paste(myPen," (",myLCI,"-",myUCI,")",sep="")
+     return(output)
+     #return(list(myPen,myUCI,myLCI))
+   }) 
+   
+   output$penetrance_5 <- renderText({penetrance5()[[1]]})
+   
    })
 
 
