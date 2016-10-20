@@ -1,10 +1,7 @@
 ### Notes
 
-**DRAFT**
-Insert description here
-Link to Eric's paper
+This calculator estimates the penetrance of a disease-associated variant based on the prevalence of the disease, the prevalence of the variant amongst individuals with the disease, and the frequency of the variant in the population, according to the method described in [Minikel et al, 2016](https://www.ncbi.nlm.nih.gov/pubmed/26791950), and further discussed in [this blog](http://www.cureffi.org/2016/10/19/estimation-of-penetrance/).  
 
-The homepage contains a link to the references for the mathematical derivations of these computations.  
 <br>
 <br>
 <br>

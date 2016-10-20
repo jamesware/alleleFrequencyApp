@@ -4,7 +4,7 @@ The methods and mathematical derivations behind the calculators on these pages a
 
 These pages were built using [Shiny](http://shiny.rstudio.com), and the source code is freely available [here](https://github.com/jamesware/alleleFrequencyApp).
 
-The app was designed and implemented by James Ware, and is maintained by members of the [Ware lab](http://www.imperial.ac.uk/people/j.ware) at Imperial College London.
+The app is released under a [GNU Lesser General Public License v2.1](https://github.com/jamesware/alleleFrequencyApp/blob/master/LICENSE_LPGL-2.1.md).  
 
 Please report any issues using the [issue tracker](https://github.com/jamesware/alleleFrequencyApp/issues/new).  
 <br>

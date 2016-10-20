@@ -142,22 +142,40 @@ server <- shinyServer(function(input, output) {
    
 ########SERVER FOR TAB5 - PENETRANCE CALCULATOR   
    
+   # formulae for penetrance and 95% confidence intervals as per Kirov et al. 2014
+   # see http://www.biologicalpsychiatryjournal.com/article/S0006-3223(13)00676-8/pdf
+   # reproduced from minikel et al
+   
+   penetrance = function(af_case, af_control, baseline_risk) {
+     calculated_penetrance = af_case * baseline_risk / af_control
+     estimated_penetrance = pmin(1,pmax(0,calculated_penetrance)) # trim to [0,1] support
+     return (estimated_penetrance)
+   }
+   
+   penetrance_confint = function (ac_case, n_case, ac_control, n_control, baseline_risk) {
+     # for a genotypic model, use 1*n_case; for allelic, use 2*n_case
+     # here, results are virtually identical.
+     case_confint = binom::binom.confint(x=ac_case,n=2*n_case,method='wilson')
+     control_confint = binom::binom.confint(x=ac_control,n=2*n_control,method='wilson')
+     lower_bound = penetrance(case_confint$lower,control_confint$upper,baseline_risk)
+     best_estimate = penetrance(case_confint$mean,control_confint$mean,baseline_risk)
+     upper_bound = penetrance(case_confint$upper,control_confint$lower,baseline_risk)
+     return ( c(lower_bound, best_estimate, upper_bound) )
+   }
+   
+   
    penetrance5 <- reactive({
      myPrev = 1/input$prev_5
-
-     myPen = myPrev * ((input$caseAC_5/input$caseAN_5) / (input$popAC_5 / input$popAN_5))
-
-     myLCI = 0
-     myUCI = 1
-     
-     myPen = signif(myPen,3)
-     
-     output = paste(myPen," (",myLCI,"-",myUCI,")",sep="")
-     return(output)
-     #return(list(myPen,myUCI,myLCI))
+     output = penetrance_confint(ac_case=input$caseAC_5,
+                        n_case=0.5*input$caseAN_5,
+                        ac_control=input$popAC_5,
+                        n_control=0.5*input$popAN_5,
+                        baseline_risk=myPrev)
+     output = signif(output,2)  
+     return(paste(output[2],"(",output[1],"-",output[3],")",sep=""))
    }) 
    
-   output$penetrance_5 <- renderText({penetrance5()[[1]]})
+   output$penetrance_5 <- renderText({penetrance5()})
    
    })
 
