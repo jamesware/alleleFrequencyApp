@@ -8,6 +8,7 @@
 
 library(shiny)
 require(stats)
+require(binom)
 
 # Define server logic required to generate output
 
