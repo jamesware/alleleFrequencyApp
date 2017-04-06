@@ -1,0 +1,9 @@
+name: alleleFrequencyApp
+account: jamesware
+server: shinyapps.io
+appId: 123730
+bundleId: 779676
+url: https://jamesware.shinyapps.io/alleleFrequencyApp/
+when: 1491503180.40945
+asMultiple: FALSE
+asStatic: FALSE
