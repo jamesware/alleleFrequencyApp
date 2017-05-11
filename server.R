@@ -101,7 +101,7 @@ server <- shinyServer(function(input, output) {
      }
    }
    
-   find_af_filter = function(ac, an, ci=.95, lower=(.1/(2*60706)), upper=2, tol=1e-7, precision=1e-7) { 
+   find_af_filter = function(ac, an, ci, lower=(.1/(2*60706)), upper=2, tol=1e-7, precision=1e-7) { 
      # backward method: given an observed AC, what is the highest AF filter for which one should remove this variant?
      # This function will accept an AC_Adj and an AN_Adj and will return the highest AF filter for which you would want to reject
      # this variant as a potential Mendelian causal allele.# for uniroot to work, lower has to be rarer than a singleton, and upper has to be higher than fixed
