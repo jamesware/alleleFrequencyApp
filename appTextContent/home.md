@@ -18,4 +18,7 @@ We provide four calculators:
 <br>
 <br>
 <br>
+Please report any issues using the [issue tracker](https://github.com/jamesware/alleleFrequencyApp/issues/new).  
+_If the app fails to load as expected, please check that you are not accessing via a proxy server._  
+<br>
 *alleleFrequencyApp - a Shiny App for allele frequency calculations Copyright (C) 2016 James Ware*
