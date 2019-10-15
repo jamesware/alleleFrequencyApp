@@ -3,7 +3,17 @@
 This repository contains code for a Shiny App to support certain allele frequency calculations for the assessment & interpretation of rare genetic variants.  
 
 A manuscript describing our approach to allele frequency assessment is available on [biorxiv](http://biorxiv.org/content/early/2016/09/02/073114).   
-You can see the app in action [here](https://jamesware.shinyapps.io/alleleFrequencyApp/).
+You can see the app in action [here](https://www.cardiodb.org/allelefrequencyapp/).
+
+## Local Deployment
+
+A Dockerfile is included for local deployment. After cloning the respository the following commands will run a shiny server instance in single app mode exposing port 3838 and writing logs to `/var/log/shiny-server`.
+
+```bash
+docker build --tag=allelefrequencyapp:latest .
+
+docker run -d -p 3838:3838 -v /var/log/shiny-server:/var/log/shiny-server allelefrequencyapp:latest
+```
 
 =====
 
