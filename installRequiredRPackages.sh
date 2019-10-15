@@ -10,7 +10,7 @@ file=$1
 
 tempfile() {
     tempprefix=$(basename "$0")
-    mktemp ~/tmp/${tempprefix}.XXXXXX
+    mktemp /tmp/${tempprefix}.XXXXXX
 }
 
 TMP1=$(tempfile)
