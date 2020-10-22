@@ -131,7 +131,7 @@ server <- shinyServer(function(input, output) {
        }, finally = {
        })
        max_af = round(uniroot_result$root,-log10(precision)) # round to nearest millionth
-       while(find_max_ac(af=max_af,an=an) < ac) {
+       while(find_max_ac(af=max_af,an=an,ci=ci) < ac) {
          max_af = max_af + precision # increase by millionths until you find the upper bound - the highest AF for which 95%CI AC is still less than observed AC
        }
        max_af = max_af - precision # back off one unit from the AF that violated the 95%CI AC < obs AC condition
