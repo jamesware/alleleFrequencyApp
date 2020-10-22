@@ -4,7 +4,7 @@ This web page contains a suite of tools to support the use of allele frequency i
 
 Distinguishing disease-causing variants from benign bystanders is perhaps the principal challenge in contemporary clinical genetics. Rarity of an allele is widely recognized as a necessary (though not sufficient) criterion for variant pathogenicity, but the key question "*how common is too common?*" remains poorly answered for many diseases. Recent large reference datasets, such as from the [Exome Aggregation Consortium (ExAC)](http://exac.broadinstitute.org), provide new opportunities for robust and rigorous variant assessment.
 
-The methods and mathematical derivations behind the calculators on these pages are described fully in our manuscript available [here](http://biorxiv.org/content/early/2016/09/02/073114).  The source code for the manuscript is available on [GitHub](https://github.com/ImperialCardioGenetics/frequencyFilter), as is the source code for [these calculators](https://github.com/jamesware/alleleFrequencyApp).
+The methods and mathematical derivations behind the calculators on these pages are described fully in our manuscript available [here](https://www.nature.com/articles/gim201726).  The source code for the manuscript is available on [GitHub](https://github.com/ImperialCardioGenetics/frequencyFilter), as is the source code for [these calculators](https://github.com/jamesware/alleleFrequencyApp).
 
 We provide four calculators:
 
