@@ -2,8 +2,8 @@
 
 This repository contains code for a Shiny App to support certain allele frequency calculations for the assessment & interpretation of rare genetic variants.  
 
-A manuscript describing our approach to allele frequency assessment is available on [biorxiv](http://biorxiv.org/content/early/2016/09/02/073114).   
-You can see the app in action [here](https://jamesware.shinyapps.io/alleleFrequencyApp/).
+A manuscript describing our approach to allele frequency assessment is published in [Genetics in Medicine](https://www.sciencedirect.com/science/article/pii/S1098360021013678), and also available in [PubMed Central](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6323549/).   
+You can see the app in action [here](http://cardiodb.org/alleleFrequencyApp).
 
 =====
 
